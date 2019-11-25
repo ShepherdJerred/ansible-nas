@@ -1,0 +1,41 @@
+---
+- name: install ufw
+  become: yes
+  apt:
+    name: ufw
+- name: whitelist ssh
+  become: yes
+  ufw:
+    rule: allow
+    name: OpenSSH
+- name: whitelist plex (32400)
+  become: yes
+  ufw:
+    rule: allow
+    port: '32400'
+- name: whitelist netdata (19999)
+  become: yes
+  ufw:
+    rule: allow
+    port: '19999'
+- name: whitelist resilio sync (8888)
+  become: yes
+  ufw:
+    rule: allow
+    port: '8888'
+- name: whitelist resilio sync (3838)
+  become: yes
+  ufw:
+    rule: allow
+    port: '3838'
+- name: whitelist resilio sync (8443)
+  become: yes
+  ufw:
+    rule: allow
+    port: '8443'
+- name: enable ufw
+  become: yes
+  ufw:
+    state: enabled
+    policy: deny
+    direction: incoming

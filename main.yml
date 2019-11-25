@@ -1,0 +1,9 @@
+---
+- hosts: nas
+  remote_user: jerred
+  roles:
+    - sudo
+    - ufw
+    - ansible-netdata
+    - ansible-plex
+    - ansible-resilio-sync

@@ -1,0 +1,9 @@
+---
+- name: install sudo
+  apt:
+    name: sudo
+- name: configure sudo
+  user:
+    name: jerred
+    groups:
+      - sudo
