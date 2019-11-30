@@ -18,21 +18,32 @@
   ufw:
     rule: allow
     port: '19999'
-- name: whitelist resilio sync (8888)
+# https://help.resilio.com/hc/en-us/articles/204754759-What-ports-and-protocols-are-used-by-Sync-
+- name: whitelist resilio sync web ui (8888)
   become: yes
   ufw:
     rule: allow
     port: '8888'
-- name: whitelist resilio sync (3838)
+- name: whitelist resilio sync listening port (52085)
+  become: yes
+  ufw:
+    rule: allow
+    port: '52085'
+- name: whitelist resilio sync LAN discovery (multicast) (3838)
   become: yes
   ufw:
     rule: allow
     port: '3838'
-- name: whitelist resilio sync (8443)
+- name: whitelist apache  (80)
   become: yes
   ufw:
     rule: allow
-    port: '8443'
+    port: '80'
+- name: whitelist apache  (443)
+  become: yes
+  ufw:
+    rule: allow
+    port: '443'
 - name: enable ufw
   become: yes
   ufw:
