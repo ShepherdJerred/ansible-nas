@@ -3,7 +3,20 @@
   remote_user: jerred
   roles:
     - sudo
+    - role: ansible-secure-ssh
+      become: yes
     - ufw
     - ansible-netdata
     - ansible-plex
     - ansible-resilio-sync
+    - role: jnv.unattended-upgrades
+      unattended_automatic_reboot: true
+      unattended_remove_unused_dependencies: true
+      unattended_mail: jerred
+      unattended_origins_patterns:
+        - origin=Debian,codename=${distro_codename}
+        - label=Debian-Security
+        - site=linux-packages.resilio.com
+        - site=downloads.plex.tv
+    - role: geerlingguy.apache
+      become: yes
