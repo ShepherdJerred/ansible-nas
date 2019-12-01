@@ -1,0 +1,45 @@
+---
+- name: install apache
+  apt:
+    name: apache2
+- name: enable apache ssl module
+  become: yes
+  apache2_module:
+    name: ssl
+- name: enable apache rewrite module
+  become: yes
+  apache2_module:
+    name: rewrite
+- name: enable apache proxy module
+  become: yes
+  apache2_module:
+    name: proxy
+- name: enable apache proxy_http module
+  become: yes
+  apache2_module:
+    name: proxy_http
+- name: clone site repository
+  become: yes
+  git:
+    repo: https://github.com/ShepherdJerred/apache-nas
+    dest: /etc/apache2/sites-available
+- name: enable site (http)
+  become: yes
+  command: a2ensite nas
+- name: enable site (https)
+  become: yes
+  command: a2ensite nas-ssl
+- name: restart apache2 service
+  become: yes
+  systemd:
+    name: apache2
+    enabled: yes
+    state: restarted
+- name: copy htpasswd
+  become: yes
+  copy:
+    src: files/.htpasswd
+    dest: /etc/apache2/.htpasswd
+    owner: root
+    group: root
+    mode: '755'

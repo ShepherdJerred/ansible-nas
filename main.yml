@@ -23,11 +23,5 @@
         - label=Debian-Security
         - site=linux-packages.resilio.com
         - site=downloads.plex.tv
-    - role: geerlingguy.apache
-      become: yes
-      apache_create_vhosts: false
-      apache_remove_default_vhost: true
-      apache_mods_enabled:
-        - ssl.load
-        - proxy.load
+    - role: apache
     - role: ssl

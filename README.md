@@ -10,8 +10,11 @@ This ansible playbook is mostly automated, but it still requires some manual act
 3. Setup resilio sync through webui
   * Could probably automate some of this, but not worth looking into right now
 
+## Requirements
+* A .htpasswd file in files/.htpasswd
+* AWS credentials defines in vars/aws\_credentials.yml
 
-# Caveats
+## Caveats
 * Plex symlink is not configurable, doesn't stop plex before moving directory
 * Plex symlink doesn't copy files over if they exist
 * UFW could potentially leave firewall in bad state. Might want to disable firewall before running UFW commands
@@ -21,7 +24,6 @@ This ansible playbook is mostly automated, but it still requires some manual act
 ## TODO
 * Configure netdata alarms
 * Install zsh
-* Setup reverse proxy for apache, netdata, plex, resilio sync (config should be on github)
 * Install exa
 * Install filebot
 * Setup task for moving files from downloads
