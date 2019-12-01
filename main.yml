@@ -5,6 +5,8 @@
     - sudo
     - role: ansible-secure-ssh
       become: yes
+      ssh_user: jerred
+      ssh_identity_key: files/id_rsa.pub
     - ufw
     - ansible-netdata
     - ansible-plex
@@ -21,3 +23,10 @@
         - site=downloads.plex.tv
     - role: geerlingguy.apache
       become: yes
+      apache_create_vhosts: false
+      apache_remove_default_vhost: true
+      apache_mods_enabled:
+        - ssl.load
+        - proxy.load
+    - role: ssl
+      vars_files: vars/aws_credentials.yml

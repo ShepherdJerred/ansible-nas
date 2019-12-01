@@ -1,8 +1,11 @@
 ---
 - name: install sudo
+  become_method: su
   apt:
     name: sudo
 - name: configure sudo
+  become: yes
+  become_method: su
   user:
     name: jerred
     groups:
