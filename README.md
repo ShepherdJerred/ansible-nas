@@ -16,6 +16,7 @@ This ansible playbook is mostly automated, but it still requires some manual act
 * Plex symlink doesn't copy files over if they exist
 * UFW could potentially leave firewall in bad state. Might want to disable firewall before running UFW commands
 * netdata seems to be installing on every run. Not good?
+* certbot was setup after the fact. Might not actually work
 
 ## TODO
 * Configure netdata alarms
@@ -24,4 +25,5 @@ This ansible playbook is mostly automated, but it still requires some manual act
 * Install exa
 * Install filebot
 * Setup task for moving files from downloads
+* Add logic for only running certbot installation when needed
 
