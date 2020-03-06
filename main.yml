@@ -12,6 +12,7 @@
     - ufw
     - ansible-netdata
     - ansible-plex
+    - fstab
     - ansible-resilio-sync
     - role: jnv.unattended-upgrades
       become: yes

@@ -1,0 +1,8 @@
+---
+- name: mount storage raid array
+  become: yes
+  mount:
+    path: /storage
+    src: /dev/md0
+    fstype: ext4
+    state: present
