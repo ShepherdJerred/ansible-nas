@@ -1,5 +1,5 @@
 ---
-- name: mount storage raid array
+- name: setup fstab to mount storage raid 5 array
   become: yes
   mount:
     path: /storage
