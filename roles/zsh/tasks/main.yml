@@ -1,0 +1,15 @@
+---
+- name: install zsh
+  become: yes
+  apt:
+    name: zsh
+- name: set zsh as the default shell for root
+  become: yes
+  user:
+    name: root
+    shell: /usr/bin/zsh
+- name: set zsh as the default shell for jerred
+  become: yes
+  user:
+    name: jerred
+    shell: /usr/bin/zsh
