@@ -1,0 +1,10 @@
+---
+- name: check if cargo is in the PATH
+  shell: which cargo 
+  register: is_cargo_installed 
+  ignore_errors: true
+- name: install rust (and cargo)
+  shell:
+    cmd: curl https://sh.rustup.rs -sSf | sh -s -- -y
+  when: is_cargo_installed.rc != 0
+
