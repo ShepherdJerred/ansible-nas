@@ -1,0 +1,10 @@
+---
+- name: check if exa is in the PATH
+  shell: which exa
+  register: is_exa_installed
+  ignore_errors: true
+# this is brittle since the path to the executable is hardcoded
+- name: install exa
+  shell:
+    cmd: ~/.cargo/bin/cargo install exa
+  when: is_exa_installed.rc != 0
