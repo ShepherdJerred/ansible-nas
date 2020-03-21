@@ -9,6 +9,10 @@
       become: yes
       ssh_user: jerred
       ssh_identity_key: files/id_rsa.pub
+    - zsh
+    - oh-my-zsh
+    - rust
+    - exa
     - ufw
     - ansible-netdata
     - ansible-plex
