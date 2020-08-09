@@ -1,0 +1,31 @@
+---
+- name: install syncthing repository certificate
+  become: yes
+  apt_key:
+    url: https://syncthing.net/release-key.txt
+- name: install syncthing repository
+  become: yes
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing stable
+- name: install syncthing
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - syncthing
+- name: clone syncthing github repo
+  git:
+    repo: https://github.com/syncthing/syncthing
+    dest: /tmp/git/syncthing
+- name: copy syncthing systemd config
+  become: yes
+  copy:
+    src: /tmp/git/syncthing/etc/linux-systemd/system/syncthing@.service
+    dest: /etc/systemd/system/syncthing@jerred.service
+    remote_src: yes
+- name: enable syncthing service
+  become: yes
+  systemd:
+    enabled: yes
+    state: started
+    name: syncthing@jerred.service

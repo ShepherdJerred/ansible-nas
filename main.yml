@@ -17,6 +17,7 @@
     - ansible-netdata
     - ansible-plex
     - fstab
+    - syncthing
     - ansible-resilio-sync
     - role: jnv.unattended-upgrades
       become: yes
@@ -28,6 +29,7 @@
         - label=Debian-Security
         - site=linux-packages.resilio.com
         - site=downloads.plex.tv
-        - site=https://get.filebot.net/deb/
+        - site=get.filebot.net
+        - site=apt.syncthing.net
     - role: apache
     - role: ssl
