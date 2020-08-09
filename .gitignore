@@ -1,2 +1,2 @@
-vars/aws_credentials.yml
+files/credentials
 files/.htpasswd

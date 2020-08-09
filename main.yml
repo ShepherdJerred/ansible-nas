@@ -1,8 +1,6 @@
 ---
 - hosts: nas
   remote_user: jerred
-  vars_files:
-    - vars/aws_credentials.yml
   roles:
     - sudo
     - role: ansible-secure-ssh

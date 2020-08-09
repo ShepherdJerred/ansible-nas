@@ -5,16 +5,16 @@
       - certbot
       - python-certbot-apache
       - python3-certbot-dns-route53
-- name: check that aws credentials are defined
-  assert:
-    that:
-      - aws_access_key_id is defined
-      - aws_secret_access_key is defined
+- name: copy aws credentials
+  become: yes
+  copy:
+    src: files/credentials
+    dest: /root/.aws/credentials
+    owner: root
+    group: root
+    mode: '600'
 - name: run certbot
   become: yes
   command: certbot -n --agree-tos -m shepherdjerred@gmail.com --installer apache --dns-route53 -d nas.shepherdjerred.com
-  environment:
-    AWS_ACCESS_KEY_ID: "{{ aws_access_key_id }}"
-    AWS_SECRET_ACCESS_KEY: "{{ aws_secret_access_key }}"
   register: certbot_output
 - debug: msg="{{ certbot_output.stdout }}"

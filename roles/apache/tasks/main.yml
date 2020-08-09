@@ -35,7 +35,7 @@
     name: apache2
     enabled: yes
     state: restarted
-- name: copy htpasswd
+- name: copy .htpasswd
   become: yes
   copy:
     src: files/.htpasswd
