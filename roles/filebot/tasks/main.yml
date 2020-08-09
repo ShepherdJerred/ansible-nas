@@ -1,0 +1,42 @@
+---
+- name: check if filebot is in the PATH
+  shell: which filebot
+  register: is_filebot_installed
+  ignore_errors: true
+- name: install filebot repository certificate
+  become: yes
+  apt_key:
+    url: https://get.filebot.net/filebot/KEYS
+  when: is_filebot_installed.rc != 0
+- name: install filebot repository
+  become: yes
+  apt_repository:
+    repo: deb [arch=all] https://get.filebot.net/deb/ universal main
+  when: is_filebot_installed.rc != 0
+- name: install java
+  become: yes
+  apt:
+    name:
+      - default-jdk
+  when: is_filebot_installed.rc != 0
+- name: install filebot
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - filebot
+    install_recommends: yes
+  when: is_filebot_installed.rc != 0
+- name: copy filebot license
+  become: yes
+  copy:
+    src: files/FILEBOT_LICENSE
+    dest: /home/jerred/FILEBOT_LICENSE
+    owner: jerred
+    group: jerred
+    mode: '600'
+- name: setup filebot license (user)
+  shell: "filebot --license /home/jerred/FILEBOT_LICENSE"
+- name: setup filebot license (root)
+  become: yes
+  shell: "filebot --license /home/jerred/FILEBOT_LICENSE"

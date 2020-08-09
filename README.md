@@ -13,6 +13,7 @@ This ansible playbook is mostly automated but it still requires some manual acti
 ## Playbook Requirements
 * A .htpasswd file in files/.htpasswd
 * AWS credentials used for setting up SSL certificates defined in vars/aws\_credentials.yml
+* A filebot license file in files/FILEBOT_LICENSE
 
 ## Caveats
 * Plex symlink is not configurable
@@ -23,10 +24,3 @@ This ansible playbook is mostly automated but it still requires some manual acti
 * Rust/cargo install is kinda jank
   * Check for existing installation is definitely broken
 * Most of these tasks should be more configurable/robust, but since this is for personal use I don't care too much
-
-## TODO
-* Configure netdata alarms
-* Setup netdata notifier with Telegram
-* Install filebot
-* Clone and symlink dotlines (the last major step before having a 100% automated install!)
-* Add logic for only running certbot installation when needed

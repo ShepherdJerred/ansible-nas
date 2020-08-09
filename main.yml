@@ -9,6 +9,8 @@
       ssh_identity_key: files/id_rsa.pub
     - zsh
     - oh-my-zsh
+    - dotfiles
+    - filebot
     - rust
     - exa
     - ufw
@@ -26,5 +28,6 @@
         - label=Debian-Security
         - site=linux-packages.resilio.com
         - site=downloads.plex.tv
+        - site=https://get.filebot.net/deb/
     - role: apache
     - role: ssl

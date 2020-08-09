@@ -1,0 +1,9 @@
+---
+- name: clone dotfiles repository
+  git:
+    repo: https://github.com/ShepherdJerred/dotfiles
+    dest: /home/jerred/git/dotfiles
+- name: install stow
+  become: yes
+  apt:
+    name: stow
