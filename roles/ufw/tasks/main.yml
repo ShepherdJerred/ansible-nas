@@ -8,22 +8,16 @@
   ufw:
     rule: allow
     name: OpenSSH
+- name: whitelist syncthing
+  become: yes
+  ufw:
+    rule: allow
+    name: syncthing
 - name: whitelist plex (32400)
   become: yes
   ufw:
     rule: allow
     port: '32400'
-# https://help.resilio.com/hc/en-us/articles/204754759-What-ports-and-protocols-are-used-by-Sync-
-- name: whitelist resilio sync listening port (52085)
-  become: yes
-  ufw:
-    rule: allow
-    port: '52085'
-- name: whitelist resilio sync LAN discovery (multicast) (3838)
-  become: yes
-  ufw:
-    rule: allow
-    port: '3838'
 - name: whitelist apache  (80)
   become: yes
   ufw:
