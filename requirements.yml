@@ -1,5 +1,5 @@
 ---
-- src: https://github.com/ShepherdJerred/ansible-secure-ssh
+- src: https://github.com/vitalk/ansible-secure-ssh
 - src: geerlingguy.apache
 - src: jnv.unattended-upgrades
 - src: https://github.com/ShepherdJerred/ansible-plex
