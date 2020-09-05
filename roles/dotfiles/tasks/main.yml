@@ -1,8 +1,8 @@
 ---
 - name: clone dotfiles repository
   git:
-    repo: https://github.com/ShepherdJerred/dotfiles
-    dest: /home/jerred/git/dotfiles
+    repo: https://github.com/shepherdjerred/dotfiles
+    dest: "/home/{{ ansible_user }}/git/dotfiles"
 - name: install stow
   become: yes
   apt:

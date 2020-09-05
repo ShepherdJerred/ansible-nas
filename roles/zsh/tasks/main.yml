@@ -8,8 +8,8 @@
   user:
     name: root
     shell: /usr/bin/zsh
-- name: set zsh as the default shell for jerred
+- name: set zsh as the default shell for "{{ ansible_user }}"
   become: yes
   user:
-    name: jerred
+    name: "{{ ansible_user }}"
     shell: /usr/bin/zsh

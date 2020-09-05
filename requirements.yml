@@ -5,3 +5,5 @@
 - src: https://github.com/ShepherdJerred/ansible-plex
 - src: https://github.com/ShepherdJerred/ansible-resilio-sync
 - src: https://www.github.com/mrlesmithjr/ansible-netdata
+- src: https://github.com/fubarhouse/ansible-role-rust
+- src: https://github.com/Oefenweb/ansible-fail2ban

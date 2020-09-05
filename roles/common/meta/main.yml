@@ -1,0 +1,25 @@
+dependencies:
+  - sudo
+  - role: ansible-secure-ssh
+    become: yes
+    ssh_user: "{{ ansible_user }}"
+    ssh_identity_key: files/id_rsa.pub
+  - apps
+  - zsh
+  - oh-my-zsh
+  - dotfiles
+  - rust
+  - exa
+  - ufw
+  - role: ansible-fail2ban
+    become: yes
+    fail2ban_banaction: ufw
+  - ansible-netdata
+  - role: jnv.unattended-upgrades
+    become: yes
+    unattended_automatic_reboot: true
+    unattended_remove_unused_dependencies: true
+    unattended_mail: "{{ ansible_user }}"
+    unattended_origins_patterns:
+      - origin=Debian,codename=${distro_codename}
+      - label=Debian-Security

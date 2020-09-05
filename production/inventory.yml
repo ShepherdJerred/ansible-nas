@@ -1,0 +1,17 @@
+all:
+  children:
+    nas:
+      hosts:
+        nas.shepherdjerred.com
+    apollo:
+      hosts:
+        apollo.shepherdjerred.com
+    mercury:
+      hosts:
+        minecraft.shepherdjerred.com
+    factorio:
+      hosts:
+        factorio.shepherdjerred.com
+    bastion:
+      hosts:
+        bastion.home.shepherdjerred.com

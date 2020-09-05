@@ -1,0 +1,14 @@
+- name: install applications
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - git
+      - tree
+      - vim
+      - gnupg
+      - zip
+      - unzip
+      - tmux
+      - htop
+    install_recommends: yes

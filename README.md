@@ -1,6 +1,9 @@
 # nas-ansible
 Ansible playbook for setting up my NAS with Plex, Netdata, and Resilio Sync
 
+## Setup
+`ansible-galaxy install -r requirements.yml`
+
 ## Manual Steps
 This ansible playbook is mostly automated but it still requires some manual action.
 1. Create user jerred

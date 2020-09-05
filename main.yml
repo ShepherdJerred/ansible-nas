@@ -1,29 +1,25 @@
 ---
-- hosts: nas
-  remote_user: jerred
+- hosts: all
+  vars_files:
+    - vars/main.yml
   roles:
-    - sudo
-    - role: ansible-secure-ssh
-      become: yes
-      ssh_user: jerred
-      ssh_identity_key: files/id_rsa.pub
-    - zsh
-    - oh-my-zsh
-    - dotfiles
+    - common
+- hosts: nas
+  vars_files:
+    - vars/main.yml
+  roles:
     - filebot
-    - rust
-    - exa
-    - ufw
-    - ansible-netdata
     - ansible-plex
+    - ufw-plex
     - fstab
     - syncthing
     - ansible-resilio-sync
+    - ufw-resilio-sync
     - role: jnv.unattended-upgrades
       become: yes
       unattended_automatic_reboot: true
       unattended_remove_unused_dependencies: true
-      unattended_mail: jerred
+      unattended_mail: "{{ ansible_user }}"
       unattended_origins_patterns:
         - origin=Debian,codename=${distro_codename}
         - label=Debian-Security
@@ -31,5 +27,6 @@
         - site=downloads.plex.tv
         - site=get.filebot.net
         - site=apt.syncthing.net
-    - role: apache
-    - role: ssl
+    - apache
+    - ufw-apache
+    - ssl

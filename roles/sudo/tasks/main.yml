@@ -1,5 +1,6 @@
 ---
 - name: install sudo
+  become: yes
   become_method: su
   apt:
     name: sudo
@@ -7,6 +8,6 @@
   become: yes
   become_method: su
   user:
-    name: jerred
+    name: "{{ ansible_user }}"
     groups:
       - sudo
