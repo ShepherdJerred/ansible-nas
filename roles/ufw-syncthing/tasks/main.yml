@@ -1,0 +1,6 @@
+---
+- name: whitelist syncthing
+  become: yes
+  ufw:
+    rule: allow
+    name: syncthing

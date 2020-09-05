@@ -13,6 +13,7 @@
     - ufw-plex
     - fstab
     - syncthing
+    - ufw-syncthing
     - ansible-resilio-sync
     - ufw-resilio-sync
     - role: jnv.unattended-upgrades
