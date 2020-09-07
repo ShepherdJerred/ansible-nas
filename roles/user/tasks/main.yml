@@ -1,0 +1,9 @@
+---
+- name: create user
+  become: yes
+  become_method: su
+  user:
+    name: jerred
+    groups:
+      - sudo
+      - wheel

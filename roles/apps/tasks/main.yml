@@ -1,6 +1,6 @@
 - name: install applications
   become: yes
-  apt:
+  package:
     update_cache: yes
     name:
       - git
@@ -11,4 +11,3 @@
       - unzip
       - tmux
       - htop
-    install_recommends: yes

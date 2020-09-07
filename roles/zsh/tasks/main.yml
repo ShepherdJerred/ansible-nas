@@ -1,7 +1,7 @@
 ---
 - name: install zsh
   become: yes
-  apt:
+  package:
     name: zsh
 - name: set zsh as the default shell for root
   become: yes

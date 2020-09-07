@@ -3,15 +3,21 @@ all:
     nas:
       hosts:
         nas.shepherdjerred.com
+      vars:
+        ansible_user: jerred
     apollo:
       hosts:
         apollo.shepherdjerred.com
+      vars:
+        ansible_user: jerred
     mercury:
       hosts:
         minecraft.shepherdjerred.com
     factorio:
       hosts:
         factorio.shepherdjerred.com
+      vars:
+        ansible_user: ec2-user
     bastion:
       hosts:
         bastion.home.shepherdjerred.com

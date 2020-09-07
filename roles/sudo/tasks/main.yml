@@ -2,7 +2,17 @@
 - name: install sudo
   become: yes
   become_method: su
-  apt:
+  package:
+    name: sudo
+- name: add wheel group
+  become: yes
+  become_method: su
+  group:
+    name: wheel
+- name: add sudo group
+  become: yes
+  become_method: su
+  group:
     name: sudo
 - name: configure sudo
   become: yes
@@ -11,3 +21,4 @@
     name: "{{ ansible_user }}"
     groups:
       - sudo
+      - wheel

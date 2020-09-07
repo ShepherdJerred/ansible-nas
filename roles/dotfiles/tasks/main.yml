@@ -5,7 +5,7 @@
     dest: "/home/{{ ansible_user }}/git/dotfiles"
 - name: install stow
   become: yes
-  apt:
+  package:
     name: stow
 - name: stow dotfiles
   shell:

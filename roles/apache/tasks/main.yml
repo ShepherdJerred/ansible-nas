@@ -1,6 +1,6 @@
 ---
 - name: install apache
-  apt:
+  package:
     name: apache2
 - name: enable apache ssl module
   become: yes
@@ -44,7 +44,7 @@
     group: root
     mode: '755'
 - name: install certbot packages
-  apt:
+  package:
     name:
       - certbot
       - python-certbot-apache

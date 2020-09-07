@@ -1,7 +1,7 @@
 ---
 - name: install ufw
   become: yes
-  apt:
+  package:
     name: ufw
 - name: whitelist ssh
   become: yes
