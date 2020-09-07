@@ -31,12 +31,12 @@
   become: yes
   copy:
     src: files/FILEBOT_LICENSE
-    dest: "/home/{{ ansible_user }}/FILEBOT_LICENSE"
+    dest: "/tmp/FILEBOT_LICENSE"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: '600'
 - name: setup filebot license (user)
-  shell: "filebot --license /home/{{ ansible_user }}/FILEBOT_LICENSE"
+  shell: "filebot --license /tmp/FILEBOT_LICENSE"
 - name: setup filebot license (root)
   become: yes
-  shell: "filebot --license /home/{{ ansible_user }}/FILEBOT_LICENSE"
+  shell: "filebot --license /tmp/FILEBOT_LICENSE"

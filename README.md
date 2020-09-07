@@ -23,7 +23,4 @@ This ansible playbook is mostly automated but it still requires some manual acti
 * Plex is not stopped before moving the library directory
 * Plex symlink doesn't copy files over if they exist
 * UFW could potentially leave firewall in bad state. Might want to disable firewall before running UFW commands
-* Updating the SSL cert requires this playbook to be run. Ideally it'd happen without intervention
-* Rust/cargo install is kinda jank
-  * Check for existing installation is definitely broken
 * Most of these tasks should be more configurable/robust, but since this is for personal use I don't care too much

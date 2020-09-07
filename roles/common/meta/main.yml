@@ -5,10 +5,8 @@ dependencies:
     ssh_user: "{{ ansible_user }}"
     ssh_identity_key: files/id_rsa.pub
   - apps
-  - zsh
   - oh-my-zsh
   - dotfiles
-  - rust
   - exa
   - ufw
   - role: ansible-fail2ban
