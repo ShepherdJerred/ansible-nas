@@ -7,6 +7,11 @@
     - common
     - ufw-apache
     - ufw-factorio
+- hosts: minecraft
+  roles:
+    - common
+    - ufw-apache
+    - ufw-minecraft
 - hosts: nas
   roles:
     - filebot

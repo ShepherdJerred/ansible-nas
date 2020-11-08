@@ -3,7 +3,7 @@
   become: yes
   become_method: su
   user:
-    name: jerred
+    name: "{{ ansible_user }}"
     groups:
       - sudo
       - wheel

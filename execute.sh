@@ -1,2 +1,2 @@
 #!/bin/sh
-ansible-playbook main.yml -i production/inventory.yml -K --limit nas,apollo,factorio
+ansible-playbook main.yml -i production/inventory.yml -K --limit mercury

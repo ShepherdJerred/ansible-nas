@@ -6,7 +6,6 @@ dependencies:
     ssh_identity_key: files/id_rsa.pub
   - apps
   - oh-my-zsh
-  - dotfiles
   - exa
   - ufw
   - role: ansible-fail2ban
