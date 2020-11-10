@@ -7,7 +7,7 @@ dependencies:
   - apps
   - oh-my-zsh
 #  - dotfiles
-  - role: exa
+  - exa
   - ufw
   - role: ansible-fail2ban
     become: yes

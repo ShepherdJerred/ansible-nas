@@ -1,9 +1,6 @@
 ---
-- name: create user
+- name: "create user {{ ansible_user }}"
   become: yes
   become_method: su
   user:
     name: "{{ ansible_user }}"
-    groups:
-      - sudo
-      - wheel
