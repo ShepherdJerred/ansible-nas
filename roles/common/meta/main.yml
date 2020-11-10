@@ -6,13 +6,16 @@ dependencies:
     ssh_identity_key: files/id_rsa.pub
   - apps
   - oh-my-zsh
-  - exa
+#  - dotfiles
+  - role: exa
   - ufw
   - role: ansible-fail2ban
     become: yes
     fail2ban_banaction: ufw
+    when: ansible_os_family == "Debian"
   - ansible-netdata
   - role: jnv.unattended-upgrades
+    when: ansible_os_family == "Debian"
     become: yes
     unattended_automatic_reboot: true
     unattended_remove_unused_dependencies: true
