@@ -7,7 +7,7 @@
   become: yes
   ufw:
     rule: allow
-    name: OpenSSH
+    name: ssh
 - name: enable ufw
   become: yes
   ufw:
