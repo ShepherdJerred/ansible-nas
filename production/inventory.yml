@@ -1,4 +1,6 @@
 all:
+  vars:
+    ansible_python_interpreter: auto_silent
   children:
     nas:
       hosts:
@@ -23,3 +25,5 @@ all:
     bastion:
       hosts:
         bastion.home.shepherdjerred.com
+      vars:
+        ansible_user: jerred
