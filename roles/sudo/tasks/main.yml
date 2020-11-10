@@ -4,21 +4,19 @@
   become_method: su
   package:
     name: sudo
-- name: add wheel group
+- name: "add {{ ansible_user }} to group sudo"
   become: yes
   become_method: su
-  group:
-    name: wheel
-- name: add sudo group
-  become: yes
-  become_method: su
-  group:
-    name: sudo
-- name: configure sudo
-  become: yes
-  become_method: su
+  when: ansible_os_family == "Debian"
   user:
     name: "{{ ansible_user }}"
     groups:
       - sudo
+- name: "add {{ ansible_user }} to group wheel"
+  become: yes
+  become_method: su
+  when: ansible_os_family == "CentOS"
+  user:
+    name: "{{ ansible_user }}"
+    groups:
       - wheel
