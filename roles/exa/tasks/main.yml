@@ -1,4 +1,9 @@
 ---
+- name: install gcc
+  become: yes
+  package:
+    name:
+      - gcc
 # this is brittle since the path to the executable is hardcoded
 - name: install exa
   shell:
