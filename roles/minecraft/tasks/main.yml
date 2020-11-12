@@ -1,0 +1,23 @@
+---
+- name: clone spigot-docker repository
+  git:
+    repo: https://github.com/shepherdjerred-minecraft/spigot-docker
+    dest: "/home/{{ ansible_user }}/git/spigot-docker"
+- name: create data directory
+  file:
+    path: /server/data
+    state: directory
+    group: ec2-user
+    owner: ec2-user
+- name: copy systemd service file
+  become: yes
+  copy:
+    src: "/home/{{ ansible_user }}/git/spigot-docker/docker.spigot.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+- name: enable docker.spigot.service
+  systemd:
+    name: docker.spigot.service
+    state: started
+    enabled: yes

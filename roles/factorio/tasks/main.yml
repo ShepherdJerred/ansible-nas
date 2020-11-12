@@ -1,0 +1,24 @@
+---
+- name: clone systemd-factorio-docker repository
+  git:
+    repo: https://github.com/shepherdjerred/systemd-factorio-docker
+    dest: "/home/{{ ansible_user }}/git/systemd-factorio-docker"
+- name: create data directory
+  file:
+    path: /server/data
+    state: directory
+    group: 845
+    owner: 845
+- name: copy systemd service file
+  become: yes
+  copy:
+    src: "/home/{{ ansible_user }}/git/systemd-factorio-docker/docker.factorio.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+- name: enable docker.factorio.service
+  systemd:
+    name: docker.factorio.service
+    state: started
+    enabled: yes
+

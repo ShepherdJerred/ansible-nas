@@ -4,14 +4,10 @@
     - common
 - hosts: factorio
   roles:
-    - common
-    - ufw-apache
-    - ufw-factorio
+    - factorio
 - hosts: minecraft
   roles:
-    - common
-    - ufw-apache
-    - ufw-minecraft
+    - minecraft
 - hosts: nas
   roles:
     - filebot

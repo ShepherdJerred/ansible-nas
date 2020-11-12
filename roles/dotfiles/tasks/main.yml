@@ -3,12 +3,3 @@
   git:
     repo: https://github.com/shepherdjerred/dotfiles
     dest: "/home/{{ ansible_user }}/git/dotfiles"
-- name: install stow
-  become: yes
-  package:
-    name: stow
-- name: stow dotfiles
-  shell:
-    cmd: "server/scripts/scripts/apply-server-dotfiles.zsh"
-  args:
-    chdir: "/home/{{ ansible_user }}/git/dotfiles"

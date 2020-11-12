@@ -1,0 +1,12 @@
+---
+- name: clone overviewer-docker repository
+  git:
+    repo: https://github.com/shepherdjerred/overviewer-docker
+    dest: "/home/{{ ansible_user }}/git/overviewer-docker"
+- name: copy systemd service file
+  become: yes
+  copy:
+    src: "/home/{{ ansible_user }}/git/overviewer-docker/docker.overviewer.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
