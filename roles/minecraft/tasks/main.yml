@@ -13,10 +13,12 @@
   become: yes
   copy:
     src: "/home/{{ ansible_user }}/git/spigot-docker/docker.spigot.service"
+    remote_src: yes
     dest: "/etc/systemd/system"
     owner: root
     group: root
 - name: enable docker.spigot.service
+  become: yes
   systemd:
     name: docker.spigot.service
     state: started

@@ -12,7 +12,7 @@ all:
         apollo.shepherdjerred.com
       vars:
         ansible_user: jerred
-    mercury:
+    minecraft:
       hosts:
         minecraft.shepherdjerred.com
       vars:

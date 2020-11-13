@@ -1,16 +1,20 @@
 - name: install docker
+  become: yes
   package:
     name: docker
 - name: add docker group
+  become: yes
   group:
     name: docker
     state: present
 - name: "add {{ ansible_user }} to docker group"
+  become: yes
   user:
     name: "{{ ansible_user }}"
     groups:
       - docker
 - name: enable docker service
+  become: yes
   systemd:
     enabled: yes
     state: started

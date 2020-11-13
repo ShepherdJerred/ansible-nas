@@ -13,10 +13,12 @@
   become: yes
   copy:
     src: "/home/{{ ansible_user }}/git/systemd-factorio-docker/docker.factorio.service"
+    remote_src: yes
     dest: "/etc/systemd/system"
     owner: root
     group: root
 - name: enable docker.factorio.service
+  become: yes
   systemd:
     name: docker.factorio.service
     state: started
