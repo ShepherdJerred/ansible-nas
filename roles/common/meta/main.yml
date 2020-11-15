@@ -1,4 +1,8 @@
 dependencies:
+  - dotfiles
+  - antibody
+  - autojump
+  - asdf
   - sudo
   - role: ansible-secure-ssh
     become: yes
@@ -6,7 +10,6 @@ dependencies:
     ssh_identity_key: files/id_rsa.pub
   - apps
   - oh-my-zsh
-#  - dotfiles
   - exa
   - ufw
   - role: ansible-fail2ban

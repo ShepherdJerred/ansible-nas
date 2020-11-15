@@ -1,5 +1,22 @@
 ---
+- name: "create dotfiles directory"
+  file:
+    path: "/home/{{ ansible_user }}/git"
+    state: directory
+- name: "create /home/{{ ansible_user }}/.local/share/"
+  file:
+    path: "/home/{{ ansible_user }}/.local/share"
+    state: directory
 - name: clone dotfiles repository
   git:
     repo: https://github.com/shepherdjerred/dotfiles
+    dest: "/home/{{ ansible_user }}/.local/share/chezmoi"
+- name: symlink dotfiles to chezmoi
+  file:
+    src: "/home/{{ ansible_user }}/.local/share/chezmoi"
     dest: "/home/{{ ansible_user }}/git/dotfiles"
+    state: link
+- name: install chezmoi
+  shell: curl -sfL https://git.io/chezmoi | sh
+- name: apply chezmoi
+  shell: bin/chezmoi -v apply

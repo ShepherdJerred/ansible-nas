@@ -1,0 +1,5 @@
+---
+- name: "install autojump"
+  become: yes
+  package:
+    name: autojump-zsh
