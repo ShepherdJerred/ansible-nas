@@ -1,16 +1,9 @@
 dependencies:
-  - dotfiles
-  - antibody
-  - autojump
-  - asdf
   - sudo
   - role: ansible-secure-ssh
     become: yes
     ssh_user: "{{ ansible_user }}"
     ssh_identity_key: files/id_rsa.pub
-  - apps
-  - oh-my-zsh
-  - exa
   - ufw
   - role: ansible-fail2ban
     become: yes
@@ -26,3 +19,10 @@ dependencies:
     unattended_origins_patterns:
       - origin=Debian,codename=${distro_codename}
       - label=Debian-Security
+  - apps
+  - oh-my-zsh
+  - dotfiles
+  - autojump
+  - antibody
+  - asdf
+  - exa

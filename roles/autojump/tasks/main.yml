@@ -1,5 +1,11 @@
 ---
-- name: "install autojump"
+- name: "install autojump (Debian)"
   become: yes
+  when: ansible_os_family == "Debian"
+  package:
+    name: autojump
+- name: "install autojump (CentOS)"
+  become: yes
+  when: ansible_os_family == "CentOS"
   package:
     name: autojump-zsh

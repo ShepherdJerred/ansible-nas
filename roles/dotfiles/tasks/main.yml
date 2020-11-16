@@ -1,4 +1,18 @@
 ---
+- name: install dependencies (Debian)
+  when: ansible_os_family == "Debian"
+  become: yes
+  package:
+    name:
+      - coreutils # histdb
+      - sqlite3 # histdb
+- name: install dependencies (CentOS)
+  when: ansible_os_family == "CentOS"
+  become: yes
+  package:
+    name:
+      - coreutils # histdb
+      - sqlite # histdb
 - name: "create dotfiles directory"
   file:
     path: "/home/{{ ansible_user }}/git"
@@ -17,6 +31,8 @@
     dest: "/home/{{ ansible_user }}/git/dotfiles"
     state: link
 - name: install chezmoi
-  shell: curl -sfL https://git.io/chezmoi | sh
+  shell:
+    cmd: curl -sfL https://git.io/chezmoi | sh
+    creates: ~/bin/chezmoi
 - name: apply chezmoi
   shell: bin/chezmoi -v apply
