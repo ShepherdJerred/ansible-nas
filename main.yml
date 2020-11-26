@@ -10,6 +10,7 @@
     - minecraft
 - hosts: nas
   roles:
+    - sonarr
     - filebot
     - ansible-plex
     - ufw-plex

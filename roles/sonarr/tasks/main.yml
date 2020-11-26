@@ -1,0 +1,32 @@
+---
+- name: install sonarr repostory key
+  become: yes
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: "0xA236C58F409091A18ACA53CBEBFF6B99D9B78493"
+- name: install sonarr repository
+  become: yes
+  apt_repository:
+    repo: deb http://apt.sonarr.tv/ master main
+- name: install sonarr
+  become: yes
+  package:
+    name: nzbdrone
+- name: create sonarr user
+  become: yes
+  user:
+    name: sonarr
+    group: jerred
+- name: copy systemd config
+  become: yes
+  copy:
+    src: "files/sonarr.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+- name: enable sonarr.service
+  become: yes
+  systemd:
+    name: sonarr.service
+    state: started
+    enabled: yes
