@@ -3,8 +3,8 @@ Description=Sonarr Daemon
 After=network.target
 
 [Service]
-User=sonarr
-Group=sonarr
+User=jerred
+Group=jerred
 
 # The UMask parameter controls the permissions of folders and files created.
 #UMask=002
