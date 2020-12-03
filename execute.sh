@@ -1,2 +1,2 @@
 #!/bin/sh
-ansible-playbook main.yml -i production/inventory.yml -e@vars/vaulted_vars.yml
+ansible-playbook main.yml -i production/inventory.yml -e@vars/vaulted_vars.yml --limit macs

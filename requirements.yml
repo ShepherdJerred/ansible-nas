@@ -1,6 +1,8 @@
 ---
 - src: https://github.com/vitalk/ansible-secure-ssh
 - src: geerlingguy.apache
+- src: geerlingguy.homebrew
+- src: geerlingguy.mas
 - src: jnv.unattended-upgrades
 - src: https://github.com/shepherdjerred/ansible-plex
 - src: https://github.com/shepherdjerred/ansible-resilio-sync
