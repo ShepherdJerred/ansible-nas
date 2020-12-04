@@ -1,6 +1,6 @@
 ---
 - name: automatically hide dock
-  shell: defaults write com.apple.dock autoide -bool true && killall Dock
+  shell: defaults write com.apple.dock autohide -bool true && killall Dock
 - name: hide recent apps on dock
   shell: defaults write com.apple.dock show-recents -bool false && killall Dock
 - name: show path bar in finder
