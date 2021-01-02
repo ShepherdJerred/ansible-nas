@@ -42,6 +42,7 @@ Resources:
       DisableApiTermination: false
       InstanceType: m4.xlarge
       Monitoring: true
+      IamInstanceProfile: EC2-CloudWatch-Logs
       SecurityGroupIds:
         - !GetAtt SshSecurityGroup.GroupId
         - !GetAtt AmongUsSecurityGroup.GroupId

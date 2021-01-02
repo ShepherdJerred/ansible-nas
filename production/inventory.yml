@@ -11,6 +11,19 @@ all:
             ansible_user: jerred
     servers:
       children:
+        ec2:
+          vars:
+            ansible_user: ec2-user
+          children:
+            amongus:
+              hosts:
+                amongus.shepherdjerred.com
+            minecraft:
+              hosts:
+                minecraft.shepherdjerred.com
+            factorio:
+              hosts:
+                factorio.shepherdjerred.com
         nas:
           hosts:
             nas.shepherdjerred.com
@@ -25,23 +38,8 @@ all:
             apollo.shepherdjerred.com
           vars:
             ansible_user: jerred
-        minecraft:
-          hosts:
-            minecraft.shepherdjerred.com
-          vars:
-            ansible_user: ec2-user
-        factorio:
-          hosts:
-            factorio.shepherdjerred.com
-          vars:
-            ansible_user: ec2-user
         bastion:
           hosts:
             bastion.home.shepherdjerred.com
           vars:
             ansible_user: jerred
-        amongus:
-          hosts:
-            amongus.shepherdjerred.com
-          vars:
-            ansible_user: ec2-user

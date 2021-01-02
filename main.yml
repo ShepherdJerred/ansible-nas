@@ -5,6 +5,9 @@
 - hosts: servers
   roles:
 #    - common
+- hosts: ec2
+  roles:
+    - ec2
 - hosts: amongus
   roles:
     - amongus
