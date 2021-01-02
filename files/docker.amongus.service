@@ -1,11 +1,10 @@
-
 [Unit]
 Description=Docker Among Us service
 After=docker.service
 Requires=docker.service
 
 [Service]
-User=root
+User=amongus
 StandardInput=tty-force
 TimeoutStartSec=0
 Restart=always

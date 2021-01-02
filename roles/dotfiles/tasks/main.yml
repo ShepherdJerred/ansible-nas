@@ -25,6 +25,7 @@
   git:
     repo: https://github.com/shepherdjerred/dotfiles
     dest: "/home/{{ ansible_user }}/.local/share/chezmoi"
+    update: yes
 - name: symlink dotfiles to chezmoi
   file:
     src: "/home/{{ ansible_user }}/.local/share/chezmoi"
@@ -36,3 +37,5 @@
     creates: ~/bin/chezmoi
 - name: apply chezmoi
   shell: bin/chezmoi -v apply
+- name: fix ssh file permissions
+  shell: chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys

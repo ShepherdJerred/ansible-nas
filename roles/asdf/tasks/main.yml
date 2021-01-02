@@ -1,7 +1,7 @@
 ---
 - name: install dependencies (CentOS)
   become: true
-  when: ansible_os_family == "CentOS"
+  when: ansible_os_family == "CentOS" or ansible_distribution == "Amazon" and ansible_distribution_version == "2"
   package:
     name:
       - readline # Python
@@ -15,6 +15,7 @@
 - name: clone asdf repo
   git:
     repo: https://github.com/asdf-vm/asdf.git
+    update: yes
     clone: true
     dest: "~/.asdf"
     depth: 1

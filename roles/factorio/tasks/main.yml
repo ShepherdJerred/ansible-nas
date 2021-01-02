@@ -3,6 +3,7 @@
   git:
     repo: https://github.com/shepherdjerred/systemd-factorio-docker
     dest: "/home/{{ ansible_user }}/git/systemd-factorio-docker"
+    update: yes
 - name: create data directory
   file:
     path: /server/data

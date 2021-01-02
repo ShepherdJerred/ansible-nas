@@ -53,13 +53,13 @@ Resources:
             VolumeSize: 8
       UserData:
         Fn::Base64: !Sub |
-          # mkdir /server
-          # mkdir /server/data
+          mkdir /server
+          mkdir /server/data
 
-          # blkid --match-token TYPE=xfs /dev/sdf || sudo mkfs -t xfs /dev/sdf
+          blkid --match-token TYPE=xfs /dev/sdf || sudo mkfs -t xfs /dev/sdf
 
-          # echo "/dev/sdf /server/data xfs defaults,nofail 0 2" | sudo tee -a /etc/fstab
-          # mount -a
+          echo "/dev/sdf /server/data xfs defaults,nofail 0 2" | sudo tee -a /etc/fstab
+          mount -a
   DataVolumeAttachment:
     Type: AWS::EC2::VolumeAttachment
     Properties:

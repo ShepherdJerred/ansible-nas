@@ -1,26 +1,45 @@
 ---
-- name: clone systemd-factorio-docker repository
-  git:
-    repo: https://github.com/shepherdjerred/systemd-amongus-docker
-    dest: "/home/{{ ansible_user }}/git/systemd-amongus-docker"
+- name: "create user amongus"
+  become: yes
+  become_method: su
+  user:
+    name: amongus
 - name: create data directory
+  become: yes
   file:
     path: /server/data
     state: directory
-    group: ec2-user
-    owner: ec2-user
+    group: amongus
+    owner: amongus
 - name: create plugins directory
+  become: yes
   file:
     path: /server/data/plugins
     state: directory
-    group: ec2-user
-    owner: ec2-user
+    group: amongus
+    owner: amongus
 - name: create libraries directory
+  become: yes
   file:
     path: /server/data/libraries
     state: directory
-    group: ec2-user
-    owner: ec2-user
+    group: amongus
+    owner: amongus
+- name: clone server repo
+  become: yes
+  git:
+    repo: https://github.com/shepherdjerred/amongus-server
+    dest: "/server/data/amongus-server"
+    update: yes
+- name: symlink config
+  become: yes
+  file:
+    src: "/server/data/amongus-server/config.json"
+    dest: "/server/data/config.json"
+    state: link
+- name: set permissions
+  become: yes
+  file: dest=/server/data owner=amongus group=amongus mode=u=rwX,g=rX,o=rX recurse=yes
 - name: copy systemd config
   become: yes
   copy:

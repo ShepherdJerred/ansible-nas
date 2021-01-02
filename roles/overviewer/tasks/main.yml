@@ -1,6 +1,7 @@
 ---
 - name: clone overviewer-docker repository
   git:
+    update: yes
     repo: https://github.com/shepherdjerred-minecraft/overviewer-docker
     dest: "/home/{{ ansible_user }}/git/overviewer-docker"
 - name: copy systemd service file

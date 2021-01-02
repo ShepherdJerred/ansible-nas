@@ -23,6 +23,7 @@
   git:
     repo: https://github.com/ShepherdJerred/apache-nas
     dest: /etc/apache2/sites-available
+    update: yes
 - name: enable site (http)
   become: yes
   command: a2ensite nas

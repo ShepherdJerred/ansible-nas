@@ -1,7 +1,7 @@
 ---
 - name: install epel
   become: yes
-  shell: amazon-linux-extras install epel
+  shell: yes | amazon-linux-extras install epel
   when: ansible_distribution == "Amazon" and ansible_distribution_version == "2"
 - name: install ufw
   become: yes

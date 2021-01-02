@@ -15,6 +15,7 @@
       - syncthing
 - name: clone syncthing github repo
   git:
+    update: yes
     repo: https://github.com/syncthing/syncthing
     dest: /tmp/git/syncthing
 - name: copy syncthing systemd config
