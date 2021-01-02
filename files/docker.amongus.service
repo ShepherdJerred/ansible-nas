@@ -5,7 +5,7 @@ Requires=docker.service
 
 [Service]
 User=amongus
-StandardInput=tty-force
+StandardInput=tty
 TimeoutStartSec=0
 Restart=always
 RestartSec=10
