@@ -1,0 +1,7 @@
+---
+- name: whitelist amongus (22023)
+  become: yes
+  ufw:
+    rule: allow
+    proto: udp
+    port: '22023'

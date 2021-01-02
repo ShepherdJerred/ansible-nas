@@ -40,3 +40,8 @@ all:
             bastion.home.shepherdjerred.com
           vars:
             ansible_user: jerred
+        amongus:
+          hosts:
+            amongus.shepherdjerred.com
+          vars:
+            ansible_user: ec2-user

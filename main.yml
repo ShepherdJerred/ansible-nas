@@ -5,6 +5,9 @@
 - hosts: servers
   roles:
     - common
+- hosts: amongus
+  roles:
+    - amongus
 - hosts: factorio
   roles:
     - factorio
@@ -17,7 +20,7 @@
     - filebot
     - ansible-plex
     - ufw-plex
-    - fstab
+    - nas-fstab
     - syncthing
     - ufw-syncthing
     - ansible-resilio-sync

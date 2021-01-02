@@ -1,0 +1,36 @@
+---
+- name: clone systemd-factorio-docker repository
+  git:
+    repo: https://github.com/shepherdjerred/systemd-amongus-docker
+    dest: "/home/{{ ansible_user }}/git/systemd-amongus-docker"
+- name: create data directory
+  file:
+    path: /server/data
+    state: directory
+    group: ec2-user
+    owner: ec2-user
+- name: create plugins directory
+  file:
+    path: /server/data/plugins
+    state: directory
+    group: ec2-user
+    owner: ec2-user
+- name: create libraries directory
+  file:
+    path: /server/data/libraries
+    state: directory
+    group: ec2-user
+    owner: ec2-user
+- name: copy systemd config
+  become: yes
+  copy:
+    src: "files/docker.amongus.service"
+    dest: "/etc/systemd/system"
+    owner: root
+    group: root
+- name: enable docker.amongus.service
+  become: yes
+  systemd:
+    name: docker.amongus.service
+    state: started
+    enabled: yes
