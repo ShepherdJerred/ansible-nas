@@ -5,11 +5,11 @@ Requires=docker.service
 
 [Service]
 User=amongus
-StandardInput=tty
+StandardInput=forcetty
 TimeoutStartSec=0
 Restart=always
 RestartSec=10
-ExecStart=/usr/bin/docker run \
+ExecStart=/server/data/update.sh && /usr/bin/docker run \
   --rm \
   --name %n \
   -p 22023:22023/udp \
