@@ -23,7 +23,6 @@ Resources:
       ImageId: !Ref LatestAl2AmiId
       DisableApiTermination: false
       InstanceType: t2.micro
-      Monitoring: true
       SecurityGroupIds:
         - !GetAtt SshSecurityGroup.GroupId
         - !GetAtt AmongUsSecurityGroup.GroupId
