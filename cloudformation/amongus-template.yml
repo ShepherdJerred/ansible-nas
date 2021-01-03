@@ -2,26 +2,28 @@ Parameters:
   LatestAl2AmiId:
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
     Default: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: KeyPair for the EC2 instance
+  AvailabilityZone:
+    Type: AWS::EC2::AvailabilityZone::Name
+    Description: AZ for the instance and other resources
 Resources:
   DataVolume:
     Type: AWS::EC2::Volume
     Properties:
-      AvailabilityZone: us-east-1c
+      AvailabilityZone: !Ref AvailabilityZone
       Size: 5
       VolumeType: gp2
-      Tags:
-        - Key: backup
-          Value: amongus
   Instance:
     Type: AWS::EC2::Instance
     Properties:
-      KeyName: Personal
-      AvailabilityZone: us-east-1c
+      KeyName: !Ref KeyPairName
+      AvailabilityZone: !Ref AvailabilityZone
       ImageId: !Ref LatestAl2AmiId
       DisableApiTermination: false
       InstanceType: t2.micro
       Monitoring: true
-      IamInstanceProfile: EC2-CloudWatch-Logs
       SecurityGroupIds:
         - !GetAtt SshSecurityGroup.GroupId
         - !GetAtt AmongUsSecurityGroup.GroupId
@@ -53,7 +55,7 @@ Resources:
   Subnet:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: us-east-1c
+      AvailabilityZone: !Ref AvailabilityZone
       CidrBlock: 172.31.0.0/16
       VpcId: !Ref Vpc
       MapPublicIpOnLaunch: true
