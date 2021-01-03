@@ -3,32 +3,11 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
     Default: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 Resources:
-  LifecyclePolicy:
-    Type: AWS::DLM::LifecyclePolicy
-    Properties:
-      Description: Backup for among us volumes
-      State: ENABLED
-      ExecutionRoleArn: arn:aws:iam::692594597524:role/service-role/AWSDataLifecycleManagerDefaultRole
-      PolicyDetails:
-        ResourceTypes:
-          - VOLUME
-        TargetTags:
-          - Key: backup
-            Value: amongus
-        Schedules:
-          - Name: Among Us Snapshots
-            CreateRule:
-              Interval: 12
-              IntervalUnit: HOURS
-              Times:
-                - "00:00"
-            RetainRule:
-              Count: 2
   DataVolume:
     Type: AWS::EC2::Volume
     Properties:
       AvailabilityZone: us-east-1c
-      Size: 10
+      Size: 5
       VolumeType: gp2
       Tags:
         - Key: backup
@@ -40,7 +19,7 @@ Resources:
       AvailabilityZone: us-east-1c
       ImageId: !Ref LatestAl2AmiId
       DisableApiTermination: false
-      InstanceType: m4.xlarge
+      InstanceType: t2.micro
       Monitoring: true
       IamInstanceProfile: EC2-CloudWatch-Logs
       SecurityGroupIds:
@@ -67,10 +46,6 @@ Resources:
       Device: /dev/sdf
       InstanceId: !Ref Instance
       VolumeId: !Ref DataVolume
-  ElasticIp:
-    Type: AWS::EC2::EIP
-    Properties:
-      InstanceId: !Ref Instance
   Vpc:
     Type: AWS::EC2::VPC
     Properties:
@@ -142,15 +117,6 @@ Resources:
     Properties:
       InternetGatewayId: !Ref InternetGateway
       VpcId: !Ref Vpc
-  RecordSet:
-    Type: AWS::Route53::RecordSet
-    Properties:
-      HostedZoneId: Z24MJMG74F2S94
-      Name: "amongus.shepherdjerred.com"
-      Type: A
-      TTL: 60
-      ResourceRecords:
-        - !Ref ElasticIp
   RouteTable:
     Type: AWS::EC2::RouteTable
     Properties:
