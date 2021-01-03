@@ -28,5 +28,5 @@
   become: yes
   systemd:
     enabled: yes
-    state: started
+    state: restarted
     name: "syncthing@{{ ansible_user }}.service"

@@ -22,5 +22,5 @@
   become: yes
   systemd:
     name: docker.spigot.service
-    state: started
+    state: restarted
     enabled: yes

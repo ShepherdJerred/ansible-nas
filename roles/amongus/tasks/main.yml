@@ -4,6 +4,12 @@
   become_method: su
   user:
     name: amongus
+- name: "add amongus to docker group"
+  become: yes
+  user:
+    name: amongus
+    groups:
+      - docker
 - name: create data directory
   become: yes
   file:
@@ -51,5 +57,12 @@
   become: yes
   systemd:
     name: docker.amongus.service
-    state: started
+    state: restarted
     enabled: yes
+- name: copy update script
+  become: yes
+  copy:
+    src: "files/update.sh"
+    dest: "/server/data/"
+    owner: amongus
+    group: amongus

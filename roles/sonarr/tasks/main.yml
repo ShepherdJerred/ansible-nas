@@ -28,5 +28,5 @@
   become: yes
   systemd:
     name: sonarr.service
-    state: started
+    state: restarted
     enabled: yes
