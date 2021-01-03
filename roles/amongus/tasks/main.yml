@@ -31,25 +31,31 @@
     state: directory
     group: amongus
     owner: amongus
-- name: clone server repo
+- name: copy config.json
   become: yes
-  git:
-    repo: https://github.com/shepherdjerred/amongus-server
-    dest: "/server/data/amongus-server"
-    update: yes
-- name: symlink config
+  copy:
+    src: "files/amongus/config.json"
+    dest: "/server/data/"
+    owner: amongus
+    group: amongus
+- name: copy config.impostorCord.json
   become: yes
-  file:
-    src: "/server/data/amongus-server/config.json"
-    dest: "/server/data/config.json"
-    state: link
-- name: set permissions
+  template:
+    src: "files/amongus/config.impostorCord.json"
+    dest: "/server/data/"
+    owner: amongus
+    group: amongus
+- name: copy update script
   become: yes
-  file: dest=/server/data owner=amongus group=amongus mode=u=rwX,g=rX,o=rX recurse=yes
+  copy:
+    src: "files/amongus/update.sh"
+    dest: "/server/data/"
+    owner: amongus
+    group: amongus
 - name: copy systemd config
   become: yes
   copy:
-    src: "files/docker.amongus.service"
+    src: "files/amongus/docker.amongus.service"
     dest: "/etc/systemd/system"
     owner: root
     group: root
@@ -59,10 +65,4 @@
     name: docker.amongus.service
     state: restarted
     enabled: yes
-- name: copy update script
-  become: yes
-  copy:
-    src: "files/update.sh"
-    dest: "/server/data/"
-    owner: amongus
-    group: amongus
+

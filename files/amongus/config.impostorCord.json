@@ -1,0 +1,11 @@
+{
+  "token": "{{ amongus_impostorcord_token }}",
+  "prefix": ";",
+  "botProxyEnabled": false,
+  "botProxyAddress": "",
+  "botProxyUsername": "",
+  "botProxyPassword": "",
+  "extraSecondsOfTalkAfterMeeting": 10,
+  "deadСanTalkDuringTasks": true,
+  "removeCommands": false
+}

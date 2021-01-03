@@ -5,15 +5,17 @@ Requires=docker.service
 
 [Service]
 User=amongus
-StandardInput=forcetty
+StandardInput=tty-force
 TimeoutStartSec=0
 Restart=always
 RestartSec=10
-ExecStart=/server/data/update.sh && /usr/bin/docker run \
+ExecStartPre=/server/data/update.sh
+ExecStart=/usr/bin/docker run \
   --rm \
   --name %n \
   -p 22023:22023/udp \
   --mount type=bind,source=/server/data/config.json,target=/app/config.json \
+  --mount type=bind,source=/server/data/config.imposterCord.json,target=/app/config.imposterCord.json \
   --mount type=bind,source=/server/data/plugins,target=/app/plugins \
   --mount type=bind,source=/server/data/libraries,target=/app/libraries  \
   -it \

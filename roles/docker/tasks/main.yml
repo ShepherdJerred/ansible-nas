@@ -10,7 +10,7 @@
 - name: copy daemon config
   become: yes
   copy:
-    src: "files/daemon.json"
+    src: "files/amongus/daemon.json"
     dest: "/etc/docker/daemon.json"
     owner: root
     group: root
