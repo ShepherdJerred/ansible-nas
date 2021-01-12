@@ -4,6 +4,11 @@ all:
   children:
     macs:
       children:
+        macbook-pro:
+          hosts:
+            macbook-pro.home.shepherdjerred.com
+          vars:
+            ansible_user: jerred
         mac-mini:
           hosts:
             mac-mini.home.shepherdjerred.com
