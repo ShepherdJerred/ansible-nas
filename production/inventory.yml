@@ -9,6 +9,9 @@ all:
             macbook-pro.home.shepherdjerred.com
           vars:
             ansible_user: jerred
+            ansible_sudo_pass: "{{ local_password }}"
+            ansible_become_pass: "{{ local_password }}"
+            hostname: macbook-pro.home.shepherdjerred.com
         mac-mini:
           hosts:
             mac-mini.home.shepherdjerred.com

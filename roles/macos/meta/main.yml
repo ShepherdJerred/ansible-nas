@@ -1,6 +1,15 @@
 ---
 dependencies:
   - macos-ssh
+  - role: geerlingguy.mas
+    environment:
+      PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+    mas_installed_apps:
+      - { id: 824183456, name: "Affinity Photo (1.7.3)"}
+      - { id: 924726344, name: "Deliveries (3.2.1)"}
+      - { id: 1449412482, name: "Reeder (4.2.2)"}
+      - { id: 497799835, name: "Xcode (12.2)"}
+      - { id: 1263070803, name: "Lungo (1.9.0)"}
   - role: geerlingguy.homebrew
     homebrew_installed_packages:
       - "readline"
@@ -72,13 +81,6 @@ dependencies:
       - "homebrew/services"
       - "homebrew/cask-drivers"
       - "koekeishiya/formulae"
-  - role: geerlingguy.mas
-    mas_installed_apps:
-      - { id: 824183456, name: "Affinity Photo (1.7.3)"}
-      - { id: 924726344, name: "Deliveries (3.2.1)"}
-      - { id: 1449412482, name: "Reeder (4.2.2)"}
-      - { id: 497799835, name: "Xcode (12.2)"}
-      - { id: 1263070803, name: "Lungo (1.9.0)"}
   - oh-my-zsh
   - dotfiles
   - autojump
