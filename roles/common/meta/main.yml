@@ -18,3 +18,4 @@ dependencies:
   - asdf
   - gpg
   - aws
+  - git
