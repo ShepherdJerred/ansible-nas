@@ -6,7 +6,7 @@ all:
       children:
         macbook-pro:
           hosts:
-            macbook-pro.home.shepherdjerred.com
+            127.0.0.1
           vars:
             ansible_user: jerred
             ansible_sudo_pass: "{{ local_password }}"

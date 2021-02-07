@@ -1,5 +1,30 @@
 ---
+- name: install certbot packages
+  become: yes
+  package:
+    name:
+      - certbot
+      - python-certbot-apache
+      - python3-certbot-dns-route53
+- name: create .aws directory for root
+  become: yes
+  file:
+    path: /root/.aws
+    state: directory
+- name: copy aws credentials
+  become: yes
+  copy:
+    src: files/credentials
+    dest: /root/.aws/credentials
+    owner: root
+    group: root
+    mode: '600'
+- name: run certbot
+  become: yes
+  command: certbot -n --agree-tos -m shepherdjerred@gmail.com --installer apache --dns-route53 -d nas.home.shepherdjerred.com
+  register: certbot_output
 - name: install apache
+  become: yes
   package:
     name: apache2
 - name: enable apache ssl module
@@ -18,24 +43,26 @@
   become: yes
   apache2_module:
     name: proxy_http
-- name: clone site repository
+- name: copy nas.conf site
   become: yes
-  git:
-    repo: https://github.com/ShepherdJerred/apache-nas
-    dest: /etc/apache2/sites-available
-    update: yes
+  copy:
+    src: "files/nas/nas.conf"
+    dest: "/etc/apache2/sites-available"
+    owner: root
+    group: root
+- name: copy nas-ssl.conf site
+  become: yes
+  copy:
+    src: "files/nas/nas-ssl.conf"
+    dest: "/etc/apache2/sites-available"
+    owner: root
+    group: root
 - name: enable site (http)
   become: yes
   command: a2ensite nas
 - name: enable site (https)
   become: yes
   command: a2ensite nas-ssl
-- name: restart apache2 service
-  become: yes
-  systemd:
-    name: apache2
-    enabled: yes
-    state: restarted
 - name: copy .htpasswd
   become: yes
   copy:
@@ -44,21 +71,9 @@
     owner: root
     group: root
     mode: '755'
-- name: install certbot packages
-  package:
-    name:
-      - certbot
-      - python-certbot-apache
-      - python3-certbot-dns-route53
-- name: copy aws credentials
+- name: restart apache2 service
   become: yes
-  copy:
-    src: files/credentials
-    dest: /root/.aws/credentials
-    owner: root
-    group: root
-    mode: '600'
-- name: run certbot
-  become: yes
-  command: certbot -n --agree-tos -m shepherdjerred@gmail.com --installer apache --dns-route53 -d nas.shepherdjerred.com
-  register: certbot_output
+  systemd:
+    name: apache2
+    enabled: yes
+    state: restarted

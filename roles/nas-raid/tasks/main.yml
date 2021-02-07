@@ -1,8 +1,8 @@
 ---
-- name: setup fstab to mount storage raid 5 array
+- name: mount /dev/md0
   become: yes
   mount:
     path: /storage
     src: /dev/md0
     fstype: ext4
-    state: present
+    state: mounted

@@ -1,5 +1,2 @@
 .idea/
 *.iml
-files/credentials
-files/.htpasswd
-files/FILEBOT_LICENSE

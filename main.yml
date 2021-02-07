@@ -19,26 +19,4 @@
     - minecraft
 - hosts: nas
   roles:
-    - sonarr
-    - filebot
-    - ansible-plex
-    - ufw-plex
-    - nas-fstab
-    - syncthing
-    - ufw-syncthing
-    - ansible-resilio-sync
-    - ufw-resilio-sync
-    - role: jnv.unattended-upgrades
-      become: yes
-      unattended_automatic_reboot: true
-      unattended_remove_unused_dependencies: true
-      unattended_mail: "{{ ansible_user }}"
-      unattended_origins_patterns:
-        - origin=Debian,codename=${distro_codename}
-        - label=Debian-Security
-        - site=linux-packages.resilio.com
-        - site=downloads.plex.tv
-        - site=get.filebot.net
-        - site=apt.syncthing.net
-    - apache
-    - ufw-apache
+    - nas

@@ -20,3 +20,11 @@
     name: "{{ ansible_user }}"
     groups:
       - wheel
+- name: "edit /etc/sudoers to allow group sudo"
+  become: yes
+  become_method: su
+  when: ansible_os_family == "Debian"
+  replace:
+    path: /etc/sudoers
+    regexp: \%sudo[ ]*ALL=\(ALL:ALL\) ALL
+    replace: "sudo    ALL=(ALL:ALL) ALL"

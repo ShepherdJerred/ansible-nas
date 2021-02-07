@@ -17,5 +17,3 @@ A giant Ansible playbook for managing my servers and personal devices.
 * Most of these tasks should be more configurable/robust, but since this is for personal use I don't care too much
 * Setup plex media server through webui
   * Not really possible to automate this (at least as far as I know)
-* Setup resilio sync through webui
-  * Could probably automate some of this, but it's not worth looking into right now
