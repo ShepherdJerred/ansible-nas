@@ -6,7 +6,7 @@ all:
       children:
         macbook-pro:
           hosts:
-            127.0.0.1
+            macbook-pro.home.shepherdjered.com
           vars:
             ansible_user: jerred
             ansible_sudo_pass: "{{ local_password }}"
@@ -15,6 +15,13 @@ all:
         mac-mini:
           hosts:
             mac-mini.home.shepherdjerred.com
+          vars:
+            ansible_user: jerred
+    wsl:
+      children:
+        jerred-desktop:
+          hosts:
+            127.0.0.1
           vars:
             ansible_user: jerred
     servers:
@@ -34,7 +41,7 @@ all:
                 factorio.shepherdjerred.com
         nas:
           hosts:
-            nas.shepherdjerred.com
+            nas.home.shepherdjerred.com
           vars:
             ansible_user: jerred
             netdata_alarm_notify_configs:

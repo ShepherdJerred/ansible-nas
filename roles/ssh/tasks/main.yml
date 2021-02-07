@@ -1,0 +1,7 @@
+---
+- name: copy ssh private key
+  copy:
+    src: files/ssh/id_rsa
+    dest: "/home/{{ ansible_user }}/.ssh/id_rsa"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"

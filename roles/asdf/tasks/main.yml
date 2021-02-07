@@ -43,6 +43,12 @@
     creates: ~/.asdf/plugins/ruby
   environment:
     PATH: "{{ ansible_env.PATH }}:/home/{{ ansible_user }}/.asdf/bin/"
+- name: install rust plugin
+  shell:
+    cmd: asdf plugin add rust
+    creates: ~/.asdf/plugins/rust
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/home/{{ ansible_user }}/.asdf/bin/"
 - name: install release team keys for node js
   shell: bash -c '~/.asdf/plugins/nodejs/bin/import-release-team-keyring'
 - name: install previous release team keys for nodejs

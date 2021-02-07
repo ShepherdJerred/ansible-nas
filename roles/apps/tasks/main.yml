@@ -3,6 +3,8 @@
   package:
     update_cache: yes
     name:
+      - shellcheck
+      - exa
       - git
       - tree
       - vim

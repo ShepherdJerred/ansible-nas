@@ -30,7 +30,7 @@
 - name: copy filebot license
   become: yes
   copy:
-    src: files/FILEBOT_LICENSE
+    src: files/nas/FILEBOT_LICENSE
     dest: "/tmp/FILEBOT_LICENSE"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"

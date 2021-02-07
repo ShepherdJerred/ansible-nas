@@ -1,5 +1,5 @@
 # Ansible Playbook
-[![License](https://img.shields.io/github/license/shepherdjerred/ansible-playbook)](https://github.com/shepherdjerred/ansible-playbook/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/shepherdjerred/ansible-playbook)](https://github.com/shepherdjerred/ansible-playbook/LICENSE)
 [![Build Status](https://img.shields.io/github/workflow/status/shepherdjerred/ansible-playbook/ansible-lint)](https://github.com/shepherdjerred/ansible-playbook/actions)
 
 A giant Ansible playbook for managing my servers and personal devices.

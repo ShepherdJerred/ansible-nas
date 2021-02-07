@@ -2,9 +2,12 @@
 - hosts: macs
   roles:
     - macos
+- hosts: wsl
+  roles:
+    - wsl
 - hosts: servers
   roles:
-    - common
+    - server
 - hosts: ec2
   roles:
     - ec2
