@@ -25,6 +25,14 @@
     state: directory
     group: plex
     owner: plex
+- name: set owner for plex files
+  become: yes
+  file:
+    owner: plex
+    group: plex
+    recurse: yes
+    state: directory
+    path: /var/lib/plexmediaserver
 - name: enable plex service
   become: yes
   systemd:
