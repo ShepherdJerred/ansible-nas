@@ -1,6 +1,6 @@
 ---
 - name: tap aws repo
-  shell: "brew tap aws/tap"
+  shell: "/home/linuxbrew/.linuxbrew/bin/brew tap aws/tap"
 - name: install sam cli
-  shell: "brew install aws-sam-cli
+  shell: "/home/linuxbrew/.linuxbrew/bin/brew install aws-sam-cli
 "
