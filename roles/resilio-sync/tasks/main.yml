@@ -11,6 +11,11 @@
   become: yes
   apt:
     name: resilio-sync
+- name: copy config
+  become: yes
+  copy:
+    src: files/nas/resilio-sync-config.json
+    dest: /etc/resilio-sync/config.json
 - name: enable resilio-sync service
   become: yes
   systemd:
@@ -28,4 +33,3 @@
   ufw:
     rule: allow
     port: '3838'
-
