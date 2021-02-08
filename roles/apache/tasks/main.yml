@@ -57,12 +57,23 @@
     dest: "/etc/apache2/sites-available"
     owner: root
     group: root
+- name: disable site (http)
+  become: yes
+  command: a2dissite nas
+- name: disable site (https)
+  become: yes
+  command: a2dissite nas-ssl
 - name: enable site (http)
   become: yes
   command: a2ensite nas
 - name: enable site (https)
   become: yes
   command: a2ensite nas-ssl
+- name: disable default sites
+  become: yes
+  command: |
+    a2dissite 000-default.conf
+    a2dissite 000-default-le-ssl.conf
 - name: copy .htpasswd
   become: yes
   copy:
@@ -71,9 +82,13 @@
     owner: root
     group: root
     mode: '755'
+- name: reload apache2
+  become: yes
+  command: systemctl reload apache2
 - name: restart apache2 service
   become: yes
   systemd:
     name: apache2
     enabled: yes
     state: restarted
+
